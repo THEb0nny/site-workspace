@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <!-- Head -->
+    <%- include("partials/head.ejs") %>
+  </head>
+
+  <body>
+    <!-- Nav -->
+    <%- include("partials/nav.ejs") %>
+
+    <!-- Main -->
+    <main>
+      <div class="container">
+        <% if (content) { %>
+          <h1><%=content%></h1>
+        <% } %>
+      </div>
+    </main>
+  </body>
+
+  <!-- Footer -->
+  <%- include("partials/footer.ejs") %>
+
+  <!-- Scripts -->
+  <%- include("partials/scripts.ejs") %>
+</html>
