@@ -15,9 +15,15 @@ const port = 3000;
 app.set('views', './views'); // Переменая views
 app.set("view engine", "ejs"); // Устанавливается движок представлений ejs
 
+/*if (app.get('env') == 'development') {
+    app.use(express.logger('dev'));
+} else {
+    app.use(express.logger('default'));
+}*/
+
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(errorHandler);
+app.use(errorHandler());
 app.use(require('./middleware/sendHttpError'));
 
 require('./routes')(app);
