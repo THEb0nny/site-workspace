@@ -1,5 +1,6 @@
 const User = require('../models/user.js').User;
 const HttpError = require('../error').HttpError;
+const ObjectID = require('mongodb').ObjectID;
 
 module.exports = function(app) {
 
@@ -17,6 +18,13 @@ module.exports = function(app) {
     });
 
     app.get('/user/:id', function(req, res, next) {
+        try {
+            let id = new ObjectID(req.param.id);
+        } catch (e) {
+            next(404);
+            return;
+        }
+
         User.findById(req.params.id, function(err, user) {
             if (err) return next(err);
             if (!user) { // 404
