@@ -1,16 +1,20 @@
 const express = require('express');
 const http = require('http');
+const connect = require('connect');
 const path = require('path');
 const config = require('config');
+const bodyParser = require('body-parser');
 const HttpError = require('./error').HttpError;
+const errorHandler = require('errorhandler');
 const app = express();
 
 const host = '127.0.0.1'
 const port = 3000;
 
-app.set('views', './views'); // Перемена views
+app.set('views', './views'); // Переменая views
 app.set("view engine", "ejs"); // Устанавливается движок представлений ejs
 
+app.use(express.bodyParser());
 app.use(require('./middleware/sendHttpError'));
 
 require('./routes')(app);
