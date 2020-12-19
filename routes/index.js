@@ -9,12 +9,6 @@ module.exports = function(app) {
         })
     })
 
-    app.get('/register', (request, response) => {
-        response.render("register", {
-            title: "Регистрация"
-        })
-    })
-
     app.get('/users', function(request, response, next) {
         User.find({}, function(err, users) {
             if (err) return next(err);

@@ -13,8 +13,6 @@ app.set("view engine", "ejs"); // Устанавливается движок п
 
 app.use(require('./middleware/sendHttpError'));
 
-//app.use(app.router);
-
 require('./routes')(app);
 
 app.use(function(err, req, res, next) {
